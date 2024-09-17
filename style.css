@@ -1,0 +1,80 @@
+body {
+  background-color: #000;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+}
+.container {
+  width: 600px;
+  padding: 20px;
+  border: 1px solid #00ff00;
+}
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #000;
+  border: 1px solid #00ff00;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+}
+button {
+  padding: 10px 20px;
+  background-color: #00ff00;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+}
+button:hover {
+  background-color: #00cc00;
+}
+.result {
+  margin-top: 20px;
+}
+.result ul {
+  list-style-type: none;
+  padding: 0;
+}
+.result li {
+  margin: 5px 0;
+  animation: typewriter 2s steps(22) 1 normal both;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid;
+}
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+.blinking-cursor {
+  font-weight: 100;
+  font-size: 24px;
+  color: #00ff00;
+  animation: blink 1s infinite step-start;
+}
+@keyframes blink {
+  from, to { border-color: transparent }
+  50% { border-color: #00ff00; }
+}
+
+#instagram-container {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    resize: both;
+    overflow: hidden;
+    border: 10px solid darkgreen;
+    display: inline-block;
+    cursor: grab;
+    touch-action: none; /* Prevents default touch actions like scrolling */
+}
+
+#instagram-frame {
+    width: 100%;
+    height: 100%;
+}

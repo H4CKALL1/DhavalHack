@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hacker Style Password Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h2> Welcome to Dhaval Password Generator</h2>
+
+  <label for="firstname">First Name(s) (comma separated)</label>
+  <input type="text" id="firstname" placeholder="e.g., John, Johnny, Jon">
+
+  <label for="secondname">Second Name(s) (comma separated)</label>
+  <input type="text" id="secondname" placeholder="e.g., Doe, Smith">
+
+  <label for="age">Age(s) (comma separated)</label>
+  <input type="text" id="age" placeholder="e.g., 25, 26, 27">
+
+  <label for="birthdate">Birthdate(s) (comma separated)</label>
+  <input type="text" id="birthdate" placeholder="e.g., 03091999, 01122000">
+
+  <label for="nickname">Nickname(s) (comma separated)</label>
+  <input type="text" id="nickname" placeholder="e.g., JD, JohnnyBoy">
+
+  <label for="petname">Pet Name(s) (comma separated)</label>
+  <input type="text" id="petname" placeholder="e.g., Max, Bella">
+
+  <label for="brothername">Brother's Name(s) (comma separated)</label>
+  <input type="text" id="brothername" placeholder="e.g., Mike, Steve">
+
+  <label for="phone">Phone Number(s) (comma separated)</label>
+  <input type="text" id="phone" placeholder="e.g., 9876543210, 8765432109">
+
+  <label for="rollnumber">Roll Number(s) (comma separated)</label>
+  <input type="text" id="rollnumber" placeholder="e.g., 10203, 20304">
+
+  <label for="favouritehero">Favorite Hero(s) (comma separated)</label>
+  <input type="text" id="favouritehero" placeholder="e.g., Batman, Superman">
+
+  <label for="favouriteperson">Favorite Person(s) (comma separated)</label>
+  <input type="text" id="favouriteperson" placeholder="e.g., Elon, Musk">
+
+  <label for="favouritebike">Favorite Bike(s) (comma separated)</label>
+  <input type="text" id="favouritebike" placeholder="e.g., Ducati, Yamaha">
+
+  <label for="favouritecar">Favorite Car(s) (comma separated)</label>
+  <input type="text" id="favouritecar" placeholder="e.g., Ferrari, Tesla">
+
+  <label for="socialmedia">Social Media Handle(s) (comma separated)</label>
+  <input type="text" id="socialmedia" placeholder="e.g., @johnny, @prohero">
+
+  <label for="passwordLength">Password Length (e.g., 6-10)</label>
+  <input type="number" id="passwordLength" min="6" max="10" placeholder="6-10">
+
+  <label for="numPasswords">Number of Passwords</label>
+  <input type="number" id="numPasswords" min="1" max="10" placeholder="Number of passwords">
+
+  <button onclick="generatePasswords()">Generate Passwords</button>
+
+  <div class="result" id="passwordResult"></div>
+</div>
+
+<script>
+    const container = document.getElementById('instagram-container');
+    let isDragging = false;
+    let startX, startY, initialLeft, initialTop;
+
+    function startDrag(event) {
+        isDragging = true;
+        // For mouse
+        if (event.type === 'mousedown') {
+            startX = event.clientX;
+            startY = event.clientY;
+        }
+        // For touch
+        if (event.type === 'touchstart') {
+            const touch = event.touches[0];
+            startX = touch.clientX;
+            startY = touch.clientY;
+        }
+        initialLeft = container.getBoundingClientRect().left;
+        initialTop = container.getBoundingClientRect().top;
+        container.style.cursor = 'grabbing';
+        event.preventDefault(); // Prevents default behavior
+    }
+
+    function dragMove(event) {
+        if (isDragging) {
+            let clientX, clientY;
+            // For mouse
+            if (event.type === 'mousemove') {
+                clientX = event.clientX;
+                clientY = event.clientY;
+            }
+            // For touch
+            if (event.type === 'touchmove') {
+                const touch = event.touches[0];
+                clientX = touch.clientX;
+                clientY = touch.clientY;
+            }
+            const deltaX = clientX - startX;
+            const deltaY = clientY - startY;
+            container.style.left = initialLeft + deltaX + 'px';
+            container.style.top = initialTop + deltaY + 'px';
+            event.preventDefault(); // Prevents default behavior (especially on mobile)
+        }
+    }
+
+    function endDrag() {
+        if (isDragging) {
+            isDragging = false;
+            container.style.cursor = 'grab';
+        }
+    }
+
+    // Event listeners
+    container.addEventListener('mousedown', startDrag);
+    container.addEventListener('touchstart', startDrag);
+    document.addEventListener('mousemove', dragMove);
+    document.addEventListener('touchmove', dragMove);
+    document.addEventListener('mouseup', endDrag);
+    document.addEventListener('touchend', endDrag);
+</script>
+<script src="script.js"></script>
+</body>
+</html>
